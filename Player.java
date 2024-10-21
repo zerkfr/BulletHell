@@ -16,7 +16,7 @@ public class Player extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, 32, 32);
+		return new Rectangle((int)x, (int)y, 48, 48);
 	}
 
 	@Override
@@ -27,6 +27,6 @@ public class Player extends GameObject{
 
 	public void render(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRect((int)x, (int)y, 32, 32);
+		g.fillRect((int)x, (int)y, 48, 48);
 	}
 }
