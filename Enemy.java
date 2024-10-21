@@ -19,7 +19,7 @@ public class Enemy extends GameObject{
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, 16, 16);
+		return new Rectangle((int)x, (int)y, 32, 32);
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class Enemy extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.red);
-		g.fillRect((int)x, (int)y, 16, 16);
+		g.fillRect((int)x, (int)y, 32, 32);
 	}
 
 }
