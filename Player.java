@@ -33,7 +33,7 @@ public class Player extends GameObject{
 			
 			GameObject tempObject = handler.object.get(i);
 			if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.TrackingEnemy) {
-				if(getBounds().intersects(tempObject.getBounds())) {  //If we intersect with enemy rectangle bounds, do this 
+				if(getBounds().intersects(tempObject.getBounds())) {  //If intersects a hitbox  
 					handler.removeObject(this);
 					System.out.println("COLLISION!");
 					

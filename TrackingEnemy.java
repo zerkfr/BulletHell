@@ -36,8 +36,7 @@ public class TrackingEnemy extends GameObject{
 	public void tick() {
 	    float diffX = x - player.getX() - 8;
 	    float diffY = y - player.getY() - 8;
-	    float distance = (float) Math.sqrt((x - player.getX()) * (x - player.getX()) + 
-	                                       (y - player.getY()) * (y - player.getY()));
+	    float distance = (float) Math.sqrt((x - player.getX()) * (x - player.getX()) + (y - player.getY()) * (y - player.getY()));
 
 	    // direction towards the player
 	    float directionX = (float) (-diffX / distance);

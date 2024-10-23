@@ -31,12 +31,6 @@ public abstract class GameObject {
 	public float getY() {
 		return y;
 	}
-	public ID getId() {
-		return id;
-	}
-	public void setId(ID id) {
-		this.id = id;
-	}
 	public void setVelX(int velX) {
 		this.velX = velX;
 	}
@@ -48,6 +42,12 @@ public abstract class GameObject {
 	}
 	public float getVelY() {
 		return velY;
+	}
+	public ID getId() {
+		return id;
+	}
+	public void setId(ID id) {
+		this.id = id;
 	}
 
 	
