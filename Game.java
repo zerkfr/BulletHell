@@ -73,7 +73,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void run() {
-		this.requestFocus(); // dont need to click for kboard input
+		this.requestFocus(); 
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -122,7 +122,6 @@ public class Game extends Canvas implements Runnable{
         }
 		
 		handler.render(g);
-
 		
 		g.dispose();
 		bs.show();
