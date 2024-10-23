@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 6691247796639148462L;
 	
-	public static final int WIDTH = 800, HEIGHT = WIDTH / 12 * 9;
+	public static final int HEIGHT = 750, WIDTH = HEIGHT / 12 * 11;
 	private boolean running = false;
 	private Thread thread;
 	
@@ -25,6 +25,7 @@ public class Game extends Canvas implements Runnable{
 	private Handler handler;
 	private Random r;
 	private Image image;
+	private Player player;
 
 	public Game(){
 		image = new Image();
@@ -33,18 +34,16 @@ public class Game extends Canvas implements Runnable{
 		r = new Random();
 		
 		handler = new Handler();
+		player = new Player(WIDTH/2-30, HEIGHT/2+60, ID.Player, handler);
 		this.addKeyListener(new KeyInput(handler, this));
-
-		handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler)); 
-		handler.addObject(new Enemy(r.nextInt(WIDTH-50), r.nextInt(HEIGHT-50), ID.BasicEnemy, handler)); 
-		handler.addObject(new Enemy(r.nextInt(WIDTH-50), r.nextInt(HEIGHT-50), ID.BasicEnemy, handler)); 
-
-		handler.addObject(new Enemy(r.nextInt(WIDTH-50), r.nextInt(HEIGHT-50), ID.BasicEnemy, handler)); 
-
 		
+		handler.addObject(player); 
+		for(int i = 1; i>0; i--) {
+			handler.addObject(new Enemy(r.nextInt(WIDTH-50), r.nextInt(HEIGHT-50), ID.Enemy, handler)); 
+		}
+		handler.addObject(new TrackingEnemy(r.nextInt(WIDTH-50), r.nextInt(HEIGHT-50), ID.TrackingEnemy, handler)); 
 
-		
-		new Window(WIDTH, HEIGHT, "Wave", this);
+		new Window(WIDTH, HEIGHT, "BulletHell", this);
 
 	}
 	
@@ -103,6 +102,8 @@ public class Game extends Canvas implements Runnable{
 	
 	private void tick() {
 		handler.tick();
+		System.out.println(player.x + ", " + player.y);
+		
 	}
 	
 	private void render() {

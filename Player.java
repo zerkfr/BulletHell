@@ -16,17 +16,33 @@ public class Player extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, 32, 32);
+		return new Rectangle((int)x, (int)y, 48, 48);
 	}
 
 	@Override
 	public void tick() {
 		x += velX;
 		y += velY;
+		
+		collision();
+		
+	}
+	
+	private void collision() {
+		for(int i = 0; i < handler.object.size(); i++) {
+			
+			GameObject tempObject = handler.object.get(i);
+			if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.Enemy || tempObject.getId() == ID.TrackingEnemy) {
+				if(getBounds().intersects(tempObject.getBounds())) {  //If we intersect with enemy rectangle bounds, do this 
+					System.out.println("COLLISION!");
+					
+				}
+			}
+		}
 	}
 
 	public void render(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRect((int)x, (int)y, 32, 32);
+		g.fillRect((int)x, (int)y, 48, 48);
 	}
 }
