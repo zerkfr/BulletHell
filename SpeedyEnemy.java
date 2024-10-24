@@ -5,17 +5,17 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-public class Enemy extends GameObject{
+public class SpeedyEnemy extends GameObject{
 
 	private Handler handler;
 	
-	public Enemy(int x, int y, ID id, Handler handler) {
+	public SpeedyEnemy(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		
 		this.handler = handler;
 		
-		int a = 5;
-		int b = -5;
+		int a = 8;
+		int b = -8;
 		int randomOfTwoInts = new Random().nextBoolean() ? a : b;
 		int randomOfTwoInts2 = new Random().nextBoolean() ? a : b;
 		
@@ -25,7 +25,7 @@ public class Enemy extends GameObject{
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, 32, 32);
+		return new Rectangle((int)x, (int)y, 20, 20);
 	}
 	
 	@Override
@@ -40,8 +40,8 @@ public class Enemy extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.gray);
-		g.fillRect((int)x, (int)y, 32, 32);
+		g.setColor(Color.blue);
+		g.fillRect((int)x, (int)y, 20, 20);
 	}
 
 }

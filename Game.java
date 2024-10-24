@@ -39,8 +39,9 @@ public class Game extends Canvas implements Runnable{
 		this.addKeyListener(new KeyInput(handler, this));
 		
 		handler.addObject(player); 
-		for(int i = 5; i > 0; i--) {
+		for(int i = 1; i > 0; i--) {
 			handler.addObject(new Enemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.Enemy, handler)); 
+			handler.addObject(new SpeedyEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.SpeedyEnemy, handler)); 
 		}
 		handler.addObject(new TrackingEnemy(r.nextInt(WIDTH-50), r.nextInt(HEIGHT-50), ID.TrackingEnemy, handler)); 
 
