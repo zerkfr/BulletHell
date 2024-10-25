@@ -27,24 +27,28 @@ public class Game extends Canvas implements Runnable{
 	private Random r;
 	private Image image;
 	private Player player;
+	private MenuScreen menu;
 
 	public Game(){
 		image = new Image();
 		backgroundImage = image.getImage("pexels-instawally-176851.jpg");
 		
 		r = new Random();
-		
+
 		handler = new Handler();
+		menu = new MenuScreen(this, handler);
+
 		player = new Player(WIDTH/2-30, HEIGHT/2+60, ID.Player, handler);
 		this.addKeyListener(new KeyInput(handler, this));
 		
+		if(gameState == STATE.Game) {
 		handler.addObject(player); 
 		for(int i = 1; i > 0; i--) {
 			handler.addObject(new Enemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.Enemy, handler)); 
 			handler.addObject(new SpeedyEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.SpeedyEnemy, handler)); 
 		}
 		handler.addObject(new TrackingEnemy(r.nextInt(WIDTH-50), r.nextInt(HEIGHT-50), ID.TrackingEnemy, handler)); 
-
+	}
 		new Window(WIDTH, HEIGHT, "BulletHell", this);
 
 	}
@@ -103,9 +107,10 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	private void tick() {
+		if(gameState == STATE.Game) {
 		handler.tick();
 		System.out.println(player.x + ", " + player.y);
-		
+		}
 	}
 	
 	private void render() {
@@ -123,6 +128,10 @@ public class Game extends Canvas implements Runnable{
         }
 		
 		handler.render(g);
+
+		if(gameState == STATE.Menu){
+			menu.render(g);
+		}
 		
 		g.dispose();
 		bs.show();
