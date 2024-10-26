@@ -14,8 +14,8 @@ public class Enemy extends GameObject{
 		
 		this.handler = handler;
 		
-		int a = 5;
-		int b = -5;
+		int a = 4;
+		int b = -4;
 		int randomOfTwoInts = new Random().nextBoolean() ? a : b;
 		int randomOfTwoInts2 = new Random().nextBoolean() ? a : b;
 		

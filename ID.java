@@ -6,5 +6,7 @@ public enum ID {
 	Enemy(),
 	TrackingEnemy(),
 	SpeedyEnemy(),
-	
+	Boss(),
+	BossProjectiles(),
+
 }

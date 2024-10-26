@@ -32,7 +32,8 @@ public class Player extends GameObject{
 		for(int i = 0; i < handler.object.size(); i++) {
 			
 			GameObject tempObject = handler.object.get(i);
-			if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.TrackingEnemy) {
+			if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.TrackingEnemy || tempObject.getId() == ID.SpeedyEnemy || tempObject.getId() == ID.Boss
+			|| tempObject.getId() == ID.BossProjectiles) {
 				if(getBounds().intersects(tempObject.getBounds())) {  //If intersects a hitbox  
 					handler.removeObject(this);
 					System.out.println("COLLISION!");
