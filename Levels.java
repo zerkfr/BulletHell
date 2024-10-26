@@ -46,6 +46,10 @@ public class Levels{
             Boss boss = new Boss((Game.WIDTH - 400), (Game.HEIGHT - 650), ID.Boss, handler);
             handler.addObject(boss);
 		}
+		if(counter == 1200) {
+			handler.addObject(new TrackingEnemy(r.nextInt(game.WIDTH-50), r.nextInt(game.HEIGHT-50), ID.TrackingEnemy, handler));
+
+		}
         if(counter == 1500) {
             handler.clearEntities();
             level = 7;
