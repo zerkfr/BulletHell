@@ -7,6 +7,10 @@ import java.util.Random;
 
 public class Player extends GameObject{
 	
+	private int health = 10;
+	private final int defaultX = Game.WIDTH/2-30;
+	private final int defaultY = Game.HEIGHT/2+60;
+	private boolean resetPosition = false;
 	Random r = new Random();
 	Handler handler;
 	
@@ -21,12 +25,13 @@ public class Player extends GameObject{
 
 	@Override
 	public void tick() {
+		System.out.println(this);
 		x += velX;
 		y += velY;
 		
 		collision();
-		
 	}
+
 	
 	private void collision() {
 		for(int i = 0; i < handler.object.size(); i++) {
@@ -34,11 +39,27 @@ public class Player extends GameObject{
 			GameObject tempObject = handler.object.get(i);
 			if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.TrackingEnemy || tempObject.getId() == ID.SpeedyEnemy || tempObject.getId() == ID.Boss
 			|| tempObject.getId() == ID.BossProjectiles) {
-				if(getBounds().intersects(tempObject.getBounds())) {  //If intersects a hitbox  
-					handler.removeObject(this);
+				if(getBounds().intersects(tempObject.getBounds())) {  //If intersects a hitbox 
+					health--; 
+					if(health == 0){
+						handler.removeObject(this);
+					}
 					System.out.println("COLLISION!");
 					
 				}
+			}
+		}
+	}
+
+	public void resetPosition() {
+		resetPosition = true;
+		for(int i = 0; i < handler.object.size(); i++) {
+			GameObject tempObject = handler.object.get(i);
+			if(tempObject.getId() == ID.Player){
+				System.out.println("resetting");
+				tempObject.setX(defaultX);
+				tempObject.setY(defaultY);
+				resetPosition = false;
 			}
 		}
 	}

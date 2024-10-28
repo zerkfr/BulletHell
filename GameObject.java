@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 public abstract class GameObject {
 	
 	protected float x, y;
-	protected ID id; //from enum
+	protected ID id; 
 	protected float velX, velY;
 	
 	public GameObject(float x, float y, ID id) {

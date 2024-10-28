@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Handler {
 
+	private Player player;
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 
 	public void tick() {
@@ -32,13 +33,13 @@ public class Handler {
 		this.object.remove(object);
 	}
 	public void clearEntities() {
-		for(int i = 0; i < object.size(); i++) {
+		for (int i = object.size() - 1; i >= 0; i--) {
 			GameObject tempObject = object.get(i);
 			
-			object.clear();
-			if(Game.gameState != Game.STATE.End)
-			addObject(new Player((int)tempObject.getX(), (int)tempObject.getY(), ID.Player, this));
-			
+			// Remove object if it is not a Player
+			if (tempObject.getId() != ID.Player) {
+				object.remove(i);
+			}
 		}
 	}
 }

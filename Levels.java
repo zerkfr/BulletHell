@@ -6,11 +6,13 @@ public class Levels{
 	private int counter = 0;	
 	private Random r;
 	private int level = 0;
+	private Player player;
 	
-	public Levels(Game game, Handler handler) {
+	public Levels(Game game, Handler handler, Player player) {
 		
 		this.handler = handler;
 		this.game = game;
+		this.player = player;
 		r = new Random();
 		
 	}
@@ -40,16 +42,23 @@ public class Levels{
 			level = 5;
 			handler.addObject(new SpeedyEnemy(r.nextInt(Game.WIDTH - 50), r.nextInt(Game.HEIGHT - 50), ID.SpeedyEnemy, handler));
 		}
+
+		//BOSS ENCOUNTER 1
 		if(counter == 1000) {
 			level = 6;
 			handler.clearEntities();
-            Boss boss = new Boss((Game.WIDTH - 400), (Game.HEIGHT - 650), ID.Boss, handler);
-            handler.addObject(boss);
+			player.resetPosition();
 		}
-		if(counter == 1200) {
+		if(counter == 1050){
+			Boss boss = new Boss((Game.WIDTH - 400), (Game.HEIGHT - 650), ID.Boss, handler);
+			handler.addObject(boss);
+		}
+		if(counter == 1100) {
 			handler.addObject(new TrackingEnemy(r.nextInt(game.WIDTH-50), r.nextInt(game.HEIGHT-50), ID.TrackingEnemy, handler));
 
 		}
+
+
         if(counter == 1500) {
             handler.clearEntities();
             level = 7;

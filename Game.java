@@ -32,10 +32,11 @@ public class Game extends Canvas implements Runnable{
 		
 		r = new Random();
 		handler = new Handler();
-		level = new Levels(this, handler);
+		player = new Player(WIDTH/2-30, HEIGHT/2+60, ID.Player, handler);
+		System.out.println(player);
+		level = new Levels(this, handler, player);
 		hud = new GameHUD(level, this);
 		menu = new MenuScreen(this, handler, level);
-		player = new Player(WIDTH/2-30, HEIGHT/2+60, ID.Player, handler);
 		this.addKeyListener(new KeyInput(handler, this));
 		this.addMouseListener(new MenuScreen(this, handler, level));
 		
