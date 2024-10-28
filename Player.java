@@ -25,7 +25,6 @@ public class Player extends GameObject{
 
 	@Override
 	public void tick() {
-		System.out.println(this);
 		x += velX;
 		y += velY;
 		
