@@ -35,12 +35,12 @@ public class Boss extends GameObject {
             projectilesSpawned = 0; 
         }
 
-        // Spawn projectiles in a delayed spiral effect
+        // spawn projectiles in a spiral
         if (projectilesSpawned < totalProjectiles) {
             long currentTime = System.currentTimeMillis();
             if (currentTime - lastAttackTime >= projectilesSpawned * spawnDelay) {
                 spawnSpiralProjectile(projectilesSpawned);
-                projectilesSpawned++; // Increment the counter after spawning
+                projectilesSpawned++; // increment the counter after spawning
             }
         }
     }

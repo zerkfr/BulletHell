@@ -19,7 +19,7 @@ public class MenuScreen extends MouseAdapter{
 public void mouseClicked(MouseEvent event){
    int mouseX = event.getX();
    int mouseY = event.getY();
-   if(game.gameState != STATE.Game) {
+   if(game.gameState == STATE.Menu) {
        game.gameState = STATE.Game;
    	player = new Player(game.WIDTH/2-30, game.HEIGHT/2+60, ID.Player, handler);
    	handler.addObject(player);
@@ -31,10 +31,25 @@ public void mouseClicked(MouseEvent event){
           
            g.setFont(new Font("AHDHfSDHGKDHSGKLJSDHG", 1, 50));
            g.setColor(Color.white);
-           g.drawString("click anywhere", game.WIDTH/2-185, 200);
-           g.drawString("to begin", game.WIDTH/2-110, 250);
+           g.drawString("click anywhere", game.WIDTH/2-185, 300);
+           g.drawString("to begin", game.WIDTH/2-110, 350);
+           
+           
+           g.setColor(Color.red);
+           g.drawString("dodge enemies to", game.WIDTH/2-230, 60);
+           g.drawString("increase score", game.WIDTH/2-185, 110);
 
-          
+
+           
+           g.setColor(Color.white);
+           g.drawString("use WASD keys to move", game.WIDTH/2-305, 660);
+       }
+       
+       
+       if(game.gameState == STATE.Dead) {
+           g.setFont(new Font("AHDHfSDHGKDHSGKLJSDHG", 1, 50));
+    	   g.setColor(Color.red);
+           g.drawString("YOU DIED HAHAHAHAHHAHAH", game.WIDTH/2-305, 200);
        }
    }
 }

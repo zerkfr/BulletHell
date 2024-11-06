@@ -47,7 +47,8 @@ public class Game extends Canvas implements Runnable{
 		Menu,
 		Help,
 		Game,
-		End
+		End,
+		Dead,
 	};
 	
 	public static STATE gameState = STATE.Menu;
@@ -118,7 +119,7 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.render(g);
 		
-		if(gameState == STATE.Menu){
+		if(gameState == STATE.Menu || gameState == STATE.Dead){
 			menu.render(g);
 		}
 		else {

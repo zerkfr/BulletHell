@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import main.Game.STATE;
+
 public class Player extends GameObject{
 	
 	private int health = 10;
@@ -42,6 +44,8 @@ public class Player extends GameObject{
 					health--; 
 					if(health == 0){
 						handler.removeObject(this);
+						Game.gameState = STATE.Dead;
+						handler.clearEntities();
 					}
 					System.out.println("COLLISION!");
 					
